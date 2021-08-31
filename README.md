@@ -20,8 +20,10 @@ Features
 Bugs
 ----
 
-* Currently only works in Widnows.
-* Running each test in a separate process is relatively slow.
+* Running each test in a separate process is relatively slow in Windows.
+  This is less of a problem in Linux.
+* Automatic memory leak detection only works in Windows. You'll have to use
+  mtrace or valgrind in Linux.
 
 Basic Usage
 -----------

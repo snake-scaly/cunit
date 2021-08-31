@@ -6,6 +6,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
 #include "cunit.h"
 
 #include "debug.h"
+#include "fast_append.h"
 #include "process.h"
 
 #define UNAVAILABLE 69
@@ -121,7 +122,11 @@ static int run_fixture(
     }
 
     for (test = fixture->tests; test->name; test++) {
-        sprintf_s(test_name, sizeof(test_name), "%s.%s", fixture_name, test->name);
+        char* b = test_name;
+        size_t s = sizeof(test_name);
+        fast_append(&b, &s, fixture_name);
+        fast_append(&b, &s, ".");
+        fast_append(&b, &s, test->name);
         run_test_in_subprocess(test_name, self, report);
     }
 
@@ -156,7 +161,7 @@ static const char* filename(const char* path)
 {
     const char* fwd = strrchr(path, '/');
     const char* bak = strrchr(path, '\\');
-    const char* sep = max(fwd, bak);
+    const char* sep = fwd > bak ? fwd : bak;
     return sep ? sep + 1 : path;
 }
 

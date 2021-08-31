@@ -29,7 +29,7 @@ static void build_command_line(char* buffer, size_t buffer_size, va_list ap)
         append_command_line_param(buffer, buffer_size, param);
 }
 
-int execute_process_createprocess(char **output, ...)
+int execute_process(char **output, ...)
 {
     char command_line[1024];
     va_list ap;

@@ -1,5 +1,4 @@
 include(CheckIncludeFile)
-include(CheckSymbolExists)
 
 check_include_file(crtdbg.h HAVE_CRTDBG)
 

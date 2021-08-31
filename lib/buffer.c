@@ -40,7 +40,9 @@ void buf_advance(struct buffer* buf, size_t read_size)
 void buf_write(struct buffer* buf, char* p, size_t size)
 {
     while (size) {
-        size_t cp = min(size, buf_free_size(buf));
+        size_t cp = buf_free_size(buf);
+        if (cp > size)
+            cp = size;
         memcpy(buf_free_ptr(buf), p, cp);
         buf_advance(buf, cp);
         p += cp;
