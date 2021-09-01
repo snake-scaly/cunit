@@ -17,13 +17,19 @@ Features
   variables for fixturing. Any crashes or memory leaks are reported as
   failures.
 
-Bugs
-----
+Limitations
+-----------
 
 * Running each test in a separate process is relatively slow in Windows.
   This is less of a problem in Linux.
+* Running each test in a separate process complicates debugging. You can use
+  the `--host` option to debug a single test.
 * Automatic memory leak detection only works in Windows. You'll have to use
-  mtrace or valgrind in Linux.
+  _mtrace_ or _valgrind_ in Linux.
+* The `teardown` hook has very limited use. It will _not_ be called in case
+  of an assertion failure, nor if a test crashes. It can only really be used
+  to free resources allocated by `setup` to avoid false memory leak detection
+  when a test runs cleanly.
 
 Basic Usage
 -----------
