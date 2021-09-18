@@ -27,7 +27,7 @@ static void teardown()
 static void test_with_global_state()
 {
     global_state++;
-    ASSERT_EQ_D(global_state, 1);
+    CUNIT_ASSERT_EQ_D(1, global_state);
     printf("global state ok\n");
 }
 
@@ -40,7 +40,7 @@ static void dummy_test()
 
 static void failing_test()
 {
-    ASSERT(0);
+    CUNIT_ASSERT(0);
 }
 
 struct cunit_fixture aux_tests = {

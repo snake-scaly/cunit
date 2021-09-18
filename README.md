@@ -39,19 +39,19 @@ Basic Usage
 
 static void test_feature1()
 {
-    ASSERT_EQ_D(2 + 2, 4);
+    CUNIT_ASSERT_EQ_D(4, 2 + 2);
 }
 
 static void test_succeeds()
 {
     const char* good_output = "feature test";
-    ASSERT_STRSTR(good_output, "ure t");
+    CUNIT_ASSERT_CONTAINS("ure t", good_output);
 }
 
 static void test_willfail()
 {
     const char* bad_output = "wrong output";
-    ASSERT_STRSTR(bad_output, "bad");
+    CUNIT_ASSERT_CONTAINS("good", bad_output);
 }
 
 struct cunit_fixture example_tests = {
@@ -83,7 +83,7 @@ $ ./example
 example_tests.test_feature1: success
 example_tests.test_succeeds: success
 example_tests.test_willfail: failure
-ASSERT_STRSTR: `bad` not in `wrong output` at D:\snake\projects\cunit\example.c:17
+Assert: `good` not in `wrong output` at D:\snake\projects\cunit\example.c:17
 3 ran, 1 failed
 $ ./example --list
 example_tests.test_feature1
@@ -116,7 +116,7 @@ static void test_fails_on_memory_leak()
 
 static void test_succeeds()
 {
-    ASSERT_STRCMP(value, "some string");
+    CUNIT_ASSERT_EQ_STR("some string", value);
 }
 
 struct cunit_fixture example_tests = {

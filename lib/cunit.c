@@ -3,7 +3,7 @@ Copyright (c) 2021 Sergey "SnakE" Gromov.
 Licensed under the MIT license. See LICENSE file in the project root for full license information.
 */
 
-#include "cunit.h"
+#include "include/cunit.h"
 
 #include "debug.h"
 #include "fast_append.h"

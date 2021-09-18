@@ -8,4 +8,4 @@ else()
     target_sources(cunit PRIVATE process_popen.c)
 endif()
 
-target_include_directories(cunit PUBLIC ${CMAKE_CURRENT_BINARY_DIR} INTERFACE .)
+target_include_directories(cunit PRIVATE ${CMAKE_CURRENT_BINARY_DIR} INTERFACE include)
